@@ -35,7 +35,7 @@ const Header = () => (
         Home
       </Link>
 
-      <Link className="navAnchor2" to="/helloworld">
+      <Link className="navAnchor2" to="/about">
         About
       </Link>
     </nav>

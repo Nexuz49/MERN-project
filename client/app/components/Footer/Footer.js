@@ -1,15 +1,14 @@
 import React from "react";
 import FooterScss from "./Footer.scss";
 
-const Footer = () => (
-  <footer>
-    <hr />
-    <p>MERN Project</p>
-    <p>
-      All rights and intended usages belong to the VELT Group Corp. IMT Limtd.
-      2021
-    </p>
-  </footer>
-);
+const Footer = () => {
+  var date = new Date();
+  var currentYear = date.getFullYear();
+  return (
+    <div>
+      <p className="footer">© Copyright MERN-Project {currentYear} </p>
+    </div>
+  );
+};
 
 export default Footer;
