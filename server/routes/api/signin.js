@@ -102,14 +102,14 @@ module.exports = app => {
         if (users.length != 1) {
           return res.send({
             success: false,
-            message: "Error: Invalid"
+            message: "Error: Invalid Credentials"
           });
         }
         const user = users[0];
         if (!user.validPassword(password)) {
           return res.send({
             success: false,
-            message: "Error: Invalid"
+            message: "Error: Invalid Credentials"
           });
         }
         // Otherwise correct user
@@ -133,7 +133,7 @@ module.exports = app => {
     );
   }); // end of signin endpoint
 
-  // start of verify endpoint
+  // start of verify endpoint  // this endpoint is used to verify the token every time a new page loads, eg. when the user moves about.
   app.get("/api/account/verify", (req, res, next) => {
     // Get the token
     const { query } = req;
@@ -180,7 +180,7 @@ module.exports = app => {
 
     // Verify that the token is unique and that it's not deleted.
 
-    UserSession.findOneAndUpdate(
+    UserSession.findOneAndUpdate( // delete the doc_id associated with the current active userSession on the users account.
       {
         _id: token,
         isDeleted: false

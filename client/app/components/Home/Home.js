@@ -39,7 +39,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const obj = getFromStorage("the_main_app");
+    const obj = getFromStorage("mern_project");
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -144,7 +144,7 @@ class Home extends Component {
       .then(json => {
         console.log("json", json);
         if (json.success) {
-          setInStorage("the_main_app", { token: json.token });
+          setInStorage("mern_project", { token: json.token });
           this.setState({
             signInError: json.message,
             isLoading: false,
@@ -165,7 +165,7 @@ class Home extends Component {
     this.setState({
       isLoading: true
     });
-    const obj = getFromStorage("the_main_app");
+    const obj = getFromStorage("mern_project");
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -173,7 +173,7 @@ class Home extends Component {
         .then(res => res.json())
         .then(json => {
           if (json.success) {
-            localStorage.removeItem("the_main_app");
+            localStorage.removeItem("mern_project");
             this.setState({
               token: "",
               isLoading: false
@@ -241,6 +241,7 @@ class Home extends Component {
           </div>
           <br />
           <br />
+          <hr />
           <div>
             {signUpError ? <p>{signUpError}</p> : null}
             <h4>Register</h4>
@@ -261,7 +262,7 @@ class Home extends Component {
             />
             <br />
             <button className="button-29" onClick={this.onSignUp}>
-              Sign Up
+              Register
             </button>
           </div>
         </div>
